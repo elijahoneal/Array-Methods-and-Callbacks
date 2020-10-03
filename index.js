@@ -12,24 +12,75 @@ console.log('its working');
 (d) Away Team goals for 2014 world cup final
 (e) Winner of 2014 world cup final */
 
+//(a)
+const home = fifaData.filter( obj => {
+    if(obj.Year === 2014 && obj.Stage === 'Final'){
+        return obj.Year;
+    };
 
+}).map( name => name['Home Team Name']);
+     console.log(home);
+
+//(b)
+const away = fifaData.filter( obj => {
+    if(obj.Year === 2014 && obj.Stage === 'Final'){
+        return obj.Year;
+    };
+    
+    }).map( name => name['Away Team Name']);
+         console.log(away);    
+
+//(c)
+const homeGoals = fifaData.filter( obj => {
+    if(obj.Year === 2014 && obj.Stage === 'Final'){
+        return obj.Year;
+    };
+    
+    }).map( goal => goal['Home Team Goals']);
+         console.log(homeGoals);
+
+//(d)
+const awayGoals = fifaData.filter( obj => {
+    if(obj.Year === 2014 && obj.Stage === 'Final'){
+        return obj.Year;
+    };
+    
+    }).map( goal => goal['Away Team Goals']);
+         console.log(awayGoals);
+//(e)
+const winner = fifaData.filter( obj => {
+    if(obj.Year === 2014 && obj.Stage === 'Final'){
+        if(obj['Home Team Goals'] > obj['Away Team Goals']){
+            return obj['Home Team Name'];
+        };
+    };
+} ).map ( win => win['Home Team Name']);
+console.log(winner)
 /* Task 2: Create a function called  getFinals that takes `data` as an argument and returns an array of objects with only finals data */
 
-function getFinals(/* code here */) {
+function getFinals(data) {
 
+    const finals = data.filter( finalist => {
+        if(finalist.Stage === 'Final'){
+            return finalist.Stage;
+        };
+    });
+    console.log(finals);
     /* code here */
-
+   
 };
-
+getFinals(fifaData);
 /* Task 3: Implement a higher-order function called `getYears` that accepts the callback function `getFinals`, and returns an array called `years` containing all of the years in the dataset */
 
-function getYears(/* code here */) {
+function getYears(getFinals) {
 
+    const years = getFinals =>  getFinals.map( year => year.Year);
+    return years;
     /* code here */
 
 };
 
-getYears();
+getYears(getFinals);
 
 /* Task 4: Implement a higher-order function called `getWinners`, that accepts the callback function `getFinals()` and determine the winner (home or away) of each `finals` game. Return the name of all winning countries in an array called `winners` */ 
 
